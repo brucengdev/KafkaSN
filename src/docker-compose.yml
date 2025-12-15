@@ -1,0 +1,6 @@
+name: NguyensSN
+services:
+  kafka:
+    image: apache/kafka:4.1.1
+    ports:
+      - 9092:9092
