@@ -2,7 +2,7 @@
 
 namespace QueueClient;
 
-public class KafkaProducer
+public class KafkaProducer: IEventProducer
 {
     private readonly IProducer<Null, string> _producer;
     public KafkaProducer(ProducerConfig config)
