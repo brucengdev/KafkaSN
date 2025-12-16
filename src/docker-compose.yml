@@ -12,6 +12,7 @@ services:
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://:9092
       - KAFKA_PROCESS_ROLES=broker,controller
       - KAFKA_NODE_ID=1
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
     networks:
       - NguyensSNNetwork
 
@@ -29,11 +30,22 @@ services:
       - NguyensSNNetwork
   
   webapi:
+    depends_on:
+      - kafka
     build:
       context: .
       dockerfile: WebAPI/dockerfile
     ports:
       - 5209:8080
+    networks:
+      - NguyensSNNetwork
+
+  account:
+    depends_on:
+      - kafka
+    build:
+      context: .
+      dockerfile: Account/dockerfile
     networks:
       - NguyensSNNetwork
   
