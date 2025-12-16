@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account", "Account\Account.csproj", "{BBBD67F1-02FC-45CA-9AD9-FDF0A55B47BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{BBBD67F1-02FC-45CA-9AD9-FDF0A55B47BB}.Release|x64.Build.0 = Release|Any CPU
 		{BBBD67F1-02FC-45CA-9AD9-FDF0A55B47BB}.Release|x86.ActiveCfg = Release|Any CPU
 		{BBBD67F1-02FC-45CA-9AD9-FDF0A55B47BB}.Release|x86.Build.0 = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|x64.Build.0 = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|x64.ActiveCfg = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|x64.Build.0 = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7DE6CBE-45A1-4846-AE4D-DC3FA23806B9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
