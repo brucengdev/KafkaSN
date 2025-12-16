@@ -7,3 +7,5 @@ services:
   
   account:
     build: ./Account/
+    ports:
+      - 5209:8080
