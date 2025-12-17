@@ -10,8 +10,8 @@ public static class KafkaConsumerConfig
     {
         services.AddSingleton((_) =>
         {
-            var boostrapServers = configuration["Kafka:BootstrapServers"];
-            var groupId = configuration["Kafka:GroupId"];
+            var boostrapServers = configuration["KafkaConsumer:BootstrapServers"];
+            var groupId = configuration["KafkaConsumer:GroupId"];
             return new ConsumerConfig()
             {
                 BootstrapServers = boostrapServers,

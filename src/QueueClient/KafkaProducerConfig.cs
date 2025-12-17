@@ -10,8 +10,8 @@ public static class KafkaProducerConfig
     {
         services.AddSingleton((_) =>
         {
-            var boostrapServers = configuration["Kafka:BootstrapServers"];
-            var clientId = configuration["Kafka:ClientId"];
+            var boostrapServers = configuration["KafkaProducer:BootstrapServers"];
+            var clientId = configuration["KafkaProducer:ClientId"];
             return new ProducerConfig()
             {
                 BootstrapServers = boostrapServers,
