@@ -25,11 +25,11 @@ services:
       echo 'foo';/opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --list;
       echo 'kafka is ready, creating topics...';
       
-      /opt/kafka/bin/kafka-topics.sh --create --topic createAccount --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1;
-      /opt/kafka/bin/kafka-topics.sh --create --topic accountCreated --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1;
+      /opt/kafka/bin/kafka-topics.sh --create --topic createAccount --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1 || true;
+      /opt/kafka/bin/kafka-topics.sh --create --topic accountCreated --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1 || true;
       
-      /opt/kafka/bin/kafka-topics.sh --create --topic createPost --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1;
-      /opt/kafka/bin/kafka-topics.sh --create --topic postCreated --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1;
+      /opt/kafka/bin/kafka-topics.sh --create --topic createPost --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1 || true;
+      /opt/kafka/bin/kafka-topics.sh --create --topic postCreated --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1 || true;
       "
     networks:
       - NguyensSNNetwork
