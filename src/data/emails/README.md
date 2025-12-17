@@ -1,0 +1,1 @@
+Folder to store emails sent by EmailNotification service.  
