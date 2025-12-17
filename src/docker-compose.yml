@@ -51,6 +51,17 @@ services:
       - NguyensSNNetwork
     volumes:
       - ./data:/mnt/data
+
+  post:
+    depends_on:
+      - kafka
+    build:
+      context: .
+      dockerfile: Post/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
   
 networks:
   NguyensSNNetwork:

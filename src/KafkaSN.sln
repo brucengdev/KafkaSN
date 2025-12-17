@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{1F5BDE2B-9B4F-4F96-B20B-E2B084488A09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Post", "Post\Post.csproj", "{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{1F5BDE2B-9B4F-4F96-B20B-E2B084488A09}.Release|x64.Build.0 = Release|Any CPU
 		{1F5BDE2B-9B4F-4F96-B20B-E2B084488A09}.Release|x86.ActiveCfg = Release|Any CPU
 		{1F5BDE2B-9B4F-4F96-B20B-E2B084488A09}.Release|x86.Build.0 = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|x64.Build.0 = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|x64.Build.0 = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A10DCCB-5D45-47D4-8DB7-28D717A808AD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
