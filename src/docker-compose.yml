@@ -36,7 +36,8 @@ services:
   
   webapi:
     depends_on:
-      - kafka
+      kafka-create-topics:
+        condition: service_completed_successfully
     build:
       context: .
       dockerfile: WebAPI/dockerfile
@@ -47,7 +48,8 @@ services:
 
   account:
     depends_on:
-      - kafka
+      kafka-create-topics:
+        condition: service_completed_successfully
     build:
       context: .
       dockerfile: Account/dockerfile
@@ -58,7 +60,8 @@ services:
 
   post:
     depends_on:
-      - kafka
+      kafka-create-topics:
+        condition: service_completed_successfully
     build:
       context: .
       dockerfile: Post/dockerfile
@@ -69,7 +72,8 @@ services:
 
   email-notification:
     depends_on:
-      - kafka
+      kafka-create-topics:
+        condition: service_completed_successfully
     build:
       context: .
       dockerfile: EmailNotification/dockerfile
