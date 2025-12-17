@@ -1,5 +1,7 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using QueueClient;
+using Models;
 
 namespace WebAPI.Controllers;
 
@@ -13,9 +15,9 @@ public class AccountsController: ControllerBase
     }
 
     [HttpPost("[controller]")]
-    public async Task<ActionResult> CreateAccount()
+    public async Task<ActionResult> CreateAccount([FromBody] Account accountModel)
     {
-        await _producer.ProduceAsync("createAccount", "A new account is created");
+        await _producer.ProduceAsync("createAccount", JsonSerializer.Serialize(accountModel));
         return Ok();
     }
 }

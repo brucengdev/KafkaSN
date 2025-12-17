@@ -48,8 +48,8 @@ services:
       dockerfile: Account/dockerfile
     networks:
       - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
   
 networks:
   NguyensSNNetwork:
-
-  

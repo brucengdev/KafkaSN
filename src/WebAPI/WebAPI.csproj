@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QueueClient\QueueClient.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
 </Project>

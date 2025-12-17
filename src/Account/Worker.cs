@@ -1,6 +1,8 @@
-using QueueClient;
-
 namespace Account;
+
+using QueueClient;
+using Models;
+using Database;
 
 public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : BackgroundService
 {
@@ -13,6 +15,10 @@ public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : Backgroun
             var createAccountEvent = consumer.Consume();
 
             logger.LogInformation("event: " + createAccountEvent.Message);
+
+            var account = createAccountEvent.Parse<Account>();
+
+            Database.Append(Store.ACCOUNTS, account.Username);
         }
     }
 }

@@ -13,5 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QueueClient\QueueClient.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 </Project>
