@@ -8,6 +8,7 @@ The code works like a Social Network (SN).
 ```
 docker compose up -d
 ```
+Use the Postman collection `KafkaS.postman_collection.json` in Postman to test the APIs.  
 
 Check folder `./src/data` for data that are written by services.  
 
