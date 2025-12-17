@@ -66,6 +66,17 @@ services:
       - NguyensSNNetwork
     volumes:
       - ./data:/mnt/data
+
+  email-notification:
+    depends_on:
+      - kafka
+    build:
+      context: .
+      dockerfile: EmailNotification/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
   
 networks:
   NguyensSNNetwork:

@@ -17,6 +17,7 @@ public class PostsController: ControllerBase
     [HttpPost("[controller]")]
     public async Task<ActionResult> CreatePost([FromBody] Post postModel)
     {
+        postModel.SentTime = DateTime.Now;
         await _producer.ProduceAsync("createPost", JsonSerializer.Serialize(postModel));
         return Ok();
     }

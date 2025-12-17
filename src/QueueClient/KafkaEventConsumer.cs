@@ -4,16 +4,16 @@ namespace QueueClient;
 
 public class KafkaEventConsumer: IEventConsumer
 {
-    private IConsumer<Null, string> _consumer;
+    private IConsumer<Ignore, string> _consumer;
     public KafkaEventConsumer(ConsumerConfig config)
     {
-        var consumerBuilder = new ConsumerBuilder<Null, string>(config);
+        var consumerBuilder = new ConsumerBuilder<Ignore, string>(config);
         _consumer = consumerBuilder.Build();
     }
 
-    public void Subscribe(string topic)
+    public void Subscribe(string[] topics)
     {
-        _consumer.Subscribe(topic);
+        _consumer.Subscribe(topics);
     }
 
     public EventData Consume()
