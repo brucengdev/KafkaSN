@@ -18,7 +18,7 @@ public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : Backgroun
 
             var post = createPostEvent.Parse<Post>();
 
-            Database.Append(Store.POSTS, post.Username + " " + post.Content);
+            Database.Append(Store.POSTS, post.Username + ":\n\t" + post.Content + "\n");
         }
     }
 }
