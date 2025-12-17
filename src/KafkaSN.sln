@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Post", "Post\Post.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailNotification", "EmailNotification\EmailNotification.csproj", "{AADFA176-41A6-4FFF-A117-DE7DD9E12311}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Reporting.csproj", "{EE9AD223-7517-48E7-B045-AE22BE6FB82A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,18 @@ Global
 		{AADFA176-41A6-4FFF-A117-DE7DD9E12311}.Release|x64.Build.0 = Release|Any CPU
 		{AADFA176-41A6-4FFF-A117-DE7DD9E12311}.Release|x86.ActiveCfg = Release|Any CPU
 		{AADFA176-41A6-4FFF-A117-DE7DD9E12311}.Release|x86.Build.0 = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|x64.Build.0 = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|x64.ActiveCfg = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|x64.Build.0 = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE9AD223-7517-48E7-B045-AE22BE6FB82A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

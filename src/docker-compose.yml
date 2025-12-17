@@ -81,6 +81,18 @@ services:
       - NguyensSNNetwork
     volumes:
       - ./data:/mnt/data
+
+  reporting:
+    depends_on:
+      kafka-create-topics:
+        condition: service_completed_successfully
+    build:
+      context: .
+      dockerfile: Reporting/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
   
 networks:
   NguyensSNNetwork:
