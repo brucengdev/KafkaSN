@@ -14,8 +14,6 @@ public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : Backgroun
             logger.LogInformation("Waiting for events from topic 'createPost`");
             var createPostEvent = consumer.Consume();
 
-            logger.LogInformation("event: " + createPostEvent.Message);
-
             var post = createPostEvent.Parse<Post>();
 
             Database.Append(Store.POSTS, post.Username + ":\n\t" + post.Content + "\n");

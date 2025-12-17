@@ -19,6 +19,7 @@ public class KafkaEventConsumer: IEventConsumer
     public EventData Consume()
     {
         var result = _consumer.Consume();
+        Console.WriteLine($"Received event {result?.Message?.Value??""} from topic {result?.Topic??""}");
         return new EventData()
         {
             Topic = result?.Topic,

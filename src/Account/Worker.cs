@@ -16,8 +16,6 @@ public class Worker(ILogger<Worker> logger,
             logger.LogInformation("Waiting for events from topic 'createAccount`");
             var createAccountEvent = consumer.Consume();
 
-            logger.LogInformation("event: " + createAccountEvent.Message);
-
             var account = createAccountEvent.Parse<Account>();
 
             Database.Append(Store.ACCOUNTS, account.Username);
