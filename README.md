@@ -1,6 +1,8 @@
 # KafkaSN - Kafka based social network
 A repository used to learn to use Kafka and Event-Driven-Architecture.  
 
+The code works like a Social Network (SN).  
+
 ## Running the demo
 
 ```
