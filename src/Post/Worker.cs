@@ -4,7 +4,9 @@ using QueueClient;
 using Models;
 using Database;
 
-public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : BackgroundService
+public class Worker(ILogger<Worker> logger, 
+    IEventConsumer consumer,
+    IEventProducer producer) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -17,6 +19,7 @@ public class Worker(ILogger<Worker> logger, IEventConsumer consumer) : Backgroun
             var post = createPostEvent.Parse<Post>();
 
             Database.Append(Store.POSTS, post.Username + ":\n\t" + post.Content + "\n");
+            await producer.ProduceAsync("postCreated", post);
         }
     }
 }

@@ -15,5 +15,9 @@ builder.Services.AddSingleton<IEventConsumer>(services =>
     return consumer;
 });
 
+
+builder.Services.AddKafkaProducerConfig(builder.Configuration);
+builder.Services.AddSingleton<IEventProducer, KafkaProducer>();
+
 var host = builder.Build();
 host.Run();
