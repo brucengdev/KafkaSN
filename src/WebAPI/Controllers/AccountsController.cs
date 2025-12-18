@@ -18,6 +18,6 @@ public class AccountsController: ControllerBase
     public async Task<ActionResult> CreateAccount([FromBody] Account accountModel)
     {
         await _producer.ProduceAsync("createAccount", JsonSerializer.Serialize(accountModel));
-        return Ok();
+        return Accepted();
     }
 }

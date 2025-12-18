@@ -19,6 +19,6 @@ public class PostsController: ControllerBase
     {
         postModel.SentTime = DateTime.Now;
         await _producer.ProduceAsync("createPost", JsonSerializer.Serialize(postModel));
-        return Ok();
+        return Accepted();
     }
 }
