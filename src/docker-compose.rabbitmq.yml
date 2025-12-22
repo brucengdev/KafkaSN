@@ -1,7 +1,24 @@
 name: NguyensSN
 services:
+
   rabbitmq:
-    image: rabbitmq:4
+    image: rabbitmq:4-management # Uses the image with the management plugin
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672" # Standard AMQP port
+      - "15672:15672" # Management UI port
+    environment:
+      # Set custom default credentials (optional, default is guest/guest)
+      RABBITMQ_DEFAULT_USER: myuser
+      RABBITMQ_DEFAULT_PASS: mypassword
+      # Optional: Set a custom virtual host
+      RABBITMQ_DEFAULT_VHOST: myvhost
+    volumes:
+      # Persist data to a local volume to avoid data loss on container removal
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq/
+  
     
   webapi:
     depends_on:
@@ -60,3 +77,9 @@ services:
   
 networks:
   NguyensSNNetwork:
+
+volumes:
+  rabbitmq_data:
+    driver: local
+  rabbitmq_log:
+    driver: local
