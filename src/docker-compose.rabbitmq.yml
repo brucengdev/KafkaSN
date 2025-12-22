@@ -1,0 +1,62 @@
+name: NguyensSN
+services:
+  rabbitmq:
+    image: rabbitmq:4
+    
+  webapi:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: WebAPI/dockerfile
+    ports:
+      - 5209:8080
+    networks:
+      - NguyensSNNetwork
+
+  account:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Account/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  post:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Post/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  email-notification:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: EmailNotification/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  reporting:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Reporting/dockerfile
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+  
+networks:
+  NguyensSNNetwork:
