@@ -7,8 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
-builder.Services.AddKafkaProducerConfig(builder.Configuration);
-builder.Services.AddSingleton<IEventProducer, KafkaProducer>();
+// builder.Services.AddKafkaProducerConfig(builder.Configuration);
+// builder.Services.AddSingleton<IEventProducer, KafkaProducer>();
+
+builder.Services.Configure<RabbitMQProducerConfig>(builder.Configuration.GetSection("RabbitMQProducer"));
+builder.Services.AddSingleton<IEventProducer, RabbitMQEventProducer>();
 
 var app = builder.Build();
 

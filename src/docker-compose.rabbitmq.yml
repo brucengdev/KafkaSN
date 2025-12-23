@@ -18,6 +18,8 @@ services:
       # Persist data to a local volume to avoid data loss on container removal
       - rabbitmq_data:/var/lib/rabbitmq/
       - rabbitmq_log:/var/log/rabbitmq/
+    networks:
+      - NguyensSNNetwork
   
     
   webapi:
