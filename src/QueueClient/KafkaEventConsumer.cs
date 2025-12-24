@@ -11,12 +11,12 @@ public class KafkaEventConsumer: IEventConsumer
         _consumer = consumerBuilder.Build();
     }
 
-    public void Subscribe(string[] topics)
+    public async Task Subscribe(string[] topics)
     {
         _consumer.Subscribe(topics);
     }
 
-    public EventData Consume()
+    public async Task<EventData> Consume()
     {
         var result = _consumer.Consume();
         Console.WriteLine($"Received event {result?.Message?.Value??""} from topic {result?.Topic??""}");
