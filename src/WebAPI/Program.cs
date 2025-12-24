@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 // builder.Services.AddKafkaProducerConfig(builder.Configuration);
 // builder.Services.AddSingleton<IEventProducer, KafkaProducer>();
 
-builder.Services.Configure<RabbitMQProducerConfig>(builder.Configuration.GetSection("RabbitMQProducer"));
+builder.Services.Configure<RabbitMQConfig>(builder.Configuration.GetSection("RabbitMQ"));
 builder.Services.AddSingleton<IEventProducer, RabbitMQEventProducer>();
 
 var app = builder.Build();

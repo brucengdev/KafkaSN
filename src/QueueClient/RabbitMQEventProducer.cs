@@ -8,19 +8,19 @@ public class RabbitMQEventProducer : IEventProducer, IDisposable
 {
     private IConnection _connection;
     private IChannel _channel;
-    public RabbitMQEventProducer(IOptions<RabbitMQProducerConfig> options)
+    public RabbitMQEventProducer(IOptions<RabbitMQConfig> options)
     {
         Setup(options.Value).GetAwaiter().GetResult();
     }
 
-    private async Task Setup(RabbitMQProducerConfig options)
+    private async Task Setup(RabbitMQConfig options)
     {
         var factory = new ConnectionFactory { 
             HostName = options.Host, 
-            Port = 5672,
-            UserName = "myuser",
-            Password = "mypassword",
-            VirtualHost = "myvhost"
+            Port = options.Port,
+            UserName = options.Username,
+            Password = options.Password,
+            VirtualHost = options.VirtualHost
         };
         _connection = await factory.CreateConnectionAsync();
         _channel = await _connection.CreateChannelAsync();
