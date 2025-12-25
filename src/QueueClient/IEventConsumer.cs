@@ -3,7 +3,7 @@ namespace QueueClient;
 public interface IEventConsumer
 {
     Task Subscribe(string[] topics);
-    Task<EventData> Consume();
+    Task Consume(Func<EventData, Task> callback, CancellationToken cancellationToken);
 }
 
 public static class EventConsumerExtensions {

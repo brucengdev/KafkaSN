@@ -11,15 +11,12 @@ public class Worker(ILogger<Worker> logger,
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Yield();
-        while (!stoppingToken.IsCancellationRequested)
+        logger.LogInformation("Waiting for events from topic 'createAccount`");
+        await consumer.Consume(async accountCreateEvent =>
         {
-            logger.LogInformation("Waiting for events from topic 'createAccount`");
-            var createAccountEvent = consumer.Consume();
-
-            var account = createAccountEvent.Parse<Account>();
-
+            var account = accountCreateEvent.Parse<Account>();
             Database.Append(Store.ACCOUNTS, account.Username);
             await producer.ProduceAsync("accountCreated", account);
-        }
+        }, stoppingToken);
     }
 }

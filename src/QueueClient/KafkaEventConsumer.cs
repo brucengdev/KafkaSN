@@ -16,14 +16,18 @@ public class KafkaEventConsumer: IEventConsumer
         _consumer.Subscribe(topics);
     }
 
-    public async Task<EventData> Consume()
+    public async Task Consume(Func<EventData, Task> callback, CancellationToken cancellationToken)
     {
-        var result = _consumer.Consume();
-        Console.WriteLine($"Received event {result?.Message?.Value??""} from topic {result?.Topic??""}");
-        return new EventData()
-        {
-            Topic = result?.Topic,
-            Message = result?.Message?.Value
-        };
+        while(!cancellationToken.IsCancellationRequested) {
+            var result = _consumer.Consume();
+            Console.WriteLine($"Received event {result?.Message?.Value??""} from topic {result?.Topic??""}");
+
+            var eventData = new EventData()
+            {
+                Topic = result?.Topic,
+                Message = result?.Message?.Value
+            };
+            await callback(eventData);
+        }
     }
 }

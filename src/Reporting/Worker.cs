@@ -10,11 +10,8 @@ public class Worker(ILogger<Worker> logger,
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Yield();
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            logger.LogInformation("Waiting for events from topic `postCreated`");
-            var receivedEvent = consumer.Consume();
-
+        logger.LogInformation("Waiting for events from topic `postCreated`");
+        await consumer.Consume(async receivedEvent => {
             var post = receivedEvent.Parse<Post>();
 
             var date = post.SentTime;
@@ -24,6 +21,6 @@ public class Worker(ILogger<Worker> logger,
             var existingCount = string.IsNullOrEmpty(fileContent)? 0: Convert.ToInt32(fileContent);
             var newCount = existingCount + 1;
             Database.Replace(fileName, newCount.ToString());
-        }
+        }, stoppingToken);
     }
 }

@@ -28,10 +28,10 @@ public class RabbitMQEventProducer : IEventProducer, IDisposable
 
     public async Task ProduceAsync(string topic, string message)
     {
-        await _channel.QueueDeclareAsync(queue: topic, durable: false, exclusive: false, autoDelete: false,
-            arguments: null);
+        await _channel.ExchangeDeclareAsync(exchange: topic, type: ExchangeType.Fanout);
+
         var body = Encoding.UTF8.GetBytes(message);
-        await _channel.BasicPublishAsync(exchange: string.Empty, routingKey: topic, body: body);
+        await _channel.BasicPublishAsync(exchange: topic, routingKey: string.Empty, body: body);
         Console.WriteLine($"Delivered '{message}' to '{topic}'");
     }
 

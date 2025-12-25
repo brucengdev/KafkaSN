@@ -44,22 +44,28 @@ public class RabbitMQEventConsumer : IEventConsumer, IDisposable
         }
     }
 
-    public async Task<EventData> Consume()
+    public async Task Consume(Func<EventData, Task> callback, CancellationToken cancellationToken)
     {
-        var tasks = _topicToQueue.Keys.Select(topic =>
-        {
+        var topics = _topicToQueue.Keys;
+        var tasks = new List<Task>();
+        foreach(var topic in topics) {
             var queue = _topicToQueue[topic];
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
-            consumer.ReceivedAsync += (model, ea) =>
+            consumer.ReceivedAsync += async (model, ea) =>
             {
                 byte[] body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
                 Console.WriteLine($" [x] {message}");
-                return Task.CompletedTask;
+                await callback(new EventData
+                {
+                    Topic = topic,
+                    Message = message
+                });
             };
-            return _channel.BasicConsumeAsync(queue, autoAck: true, consumer);
-        });
+            var consumeTask = _channel.BasicConsumeAsync(queue, autoAck: true, consumer, cancellationToken);
+            tasks.Add(consumeTask);
+        }
         await Task.WhenAll(tasks);
     }
 
