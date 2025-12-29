@@ -46,10 +46,13 @@ public class RabbitMQEventConsumer : IEventConsumer, IDisposable
 
     public async Task Consume(Func<EventData, Task> callback, CancellationToken cancellationToken)
     {
+        await Task.Yield();
         var topics = _topicToQueue.Keys;
         var tasks = new List<Task>();
+        Console.WriteLine($"Topics = [{string.Join(",", topics)}]");
         foreach(var topic in topics) {
             var queue = _topicToQueue[topic];
+        Console.WriteLine($"Topic={topic}, Queue={queue}");
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
             consumer.ReceivedAsync += async (model, ea) =>

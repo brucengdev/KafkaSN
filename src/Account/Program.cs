@@ -24,7 +24,7 @@ builder.Services.AddSingleton<IEventConsumer>(services =>
 {
     var config = services.GetRequiredService<IOptions<RabbitMQConfig>>();
     var consumer = new RabbitMQEventConsumer(config);
-    consumer.Subscribe("createAccount");
+    consumer.Subscribe("createAccount").GetAwaiter().GetResult();
 
     return consumer;
 });
