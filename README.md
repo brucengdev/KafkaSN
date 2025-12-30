@@ -4,10 +4,19 @@ A repository used to learn to use Kafka and Event-Driven-Architecture.
 The code works like a Social Network (SN).  
 
 ## Running the demo
-
+Run docker compose under ./src folder.  
+Using the default `docker-compose.yml` will run the demo with Kafka.  
 ```
+docker compose build
 docker compose up -d
 ```
+
+To use RabbitMQ, use `docker-compose.rabbitmq.yml`  
+```
+docker compose -f docker-compose.rabbitmq.yml build
+docker compose -f docker-compose.rabbitmq.yml up -d
+```
+
 Use the Postman collection `KafkaS.postman_collection.json` in Postman to test the APIs.  
 
 Check folder `./src/data` for data that are written by services.  
