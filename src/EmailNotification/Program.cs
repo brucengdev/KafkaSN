@@ -28,7 +28,7 @@ if(queueToUse == "rabbitmq")
         consumer.Subscribe(["accountCreated", "postCreated"]).GetAwaiter().GetResult();
 
         return consumer;
-});
+    });
 }
 
 var host = builder.Build();
