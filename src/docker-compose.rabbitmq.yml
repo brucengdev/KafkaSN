@@ -28,6 +28,8 @@ services:
     build:
       context: .
       dockerfile: WebAPI/dockerfile
+    environment:
+      - QUEUE=rabbitmq
     ports:
       - 5209:8080
     networks:
@@ -39,6 +41,8 @@ services:
     build:
       context: .
       dockerfile: Account/dockerfile
+    environment:
+      - QUEUE=rabbitmq
     networks:
       - NguyensSNNetwork
     volumes:
@@ -50,6 +54,8 @@ services:
     build:
       context: .
       dockerfile: Post/dockerfile
+    environment:
+      - QUEUE=rabbitmq
     networks:
       - NguyensSNNetwork
     volumes:
@@ -61,6 +67,8 @@ services:
     build:
       context: .
       dockerfile: EmailNotification/dockerfile
+    environment:
+      - QUEUE=rabbitmq
     networks:
       - NguyensSNNetwork
     volumes:
@@ -72,6 +80,8 @@ services:
     build:
       context: .
       dockerfile: Reporting/dockerfile
+    environment:
+      - QUEUE=rabbitmq
     networks:
       - NguyensSNNetwork
     volumes:
