@@ -1,0 +1,97 @@
+name: NguyensSN
+services:
+
+  rabbitmq:
+    image: rabbitmq:4-management # Uses the image with the management plugin
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672" # Standard AMQP port
+      - "15672:15672" # Management UI port
+    environment:
+      # Set custom default credentials (optional, default is guest/guest)
+      RABBITMQ_DEFAULT_USER: myuser
+      RABBITMQ_DEFAULT_PASS: mypassword
+      # Optional: Set a custom virtual host
+      RABBITMQ_DEFAULT_VHOST: myvhost
+    volumes:
+      # Persist data to a local volume to avoid data loss on container removal
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq/
+    networks:
+      - NguyensSNNetwork
+  
+    
+  webapi:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: WebAPI/dockerfile
+    environment:
+      - QUEUE=rabbitmq
+    ports:
+      - 5209:8080
+    networks:
+      - NguyensSNNetwork
+
+  account:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Account/dockerfile
+    environment:
+      - QUEUE=rabbitmq
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  post:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Post/dockerfile
+    environment:
+      - QUEUE=rabbitmq
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  email-notification:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: EmailNotification/dockerfile
+    environment:
+      - QUEUE=rabbitmq
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+
+  reporting:
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: Reporting/dockerfile
+    environment:
+      - QUEUE=rabbitmq
+    networks:
+      - NguyensSNNetwork
+    volumes:
+      - ./data:/mnt/data
+  
+networks:
+  NguyensSNNetwork:
+
+volumes:
+  rabbitmq_data:
+    driver: local
+  rabbitmq_log:
+    driver: local

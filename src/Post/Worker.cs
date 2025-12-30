@@ -11,15 +11,12 @@ public class Worker(ILogger<Worker> logger,
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Yield();
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            logger.LogInformation("Waiting for events from topic 'createPost`");
-            var createPostEvent = consumer.Consume();
-
+        logger.LogInformation("Waiting for events from topic 'createPost`");
+        await consumer.Consume(async createPostEvent => {
             var post = createPostEvent.Parse<Post>();
 
             Database.Append(Store.POSTS, post.Username + ":\n\t" + post.Content + "\n");
             await producer.ProduceAsync("postCreated", post);
-        }
+        }, stoppingToken);
     }
 }

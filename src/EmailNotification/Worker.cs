@@ -10,17 +10,14 @@ public class Worker(ILogger<Worker> logger,
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await Task.Yield();
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            logger.LogInformation("Waiting for events from topic 'accountCreated` and `postCreated`");
-            var receivedEvent = consumer.Consume();
-
+        logger.LogInformation("Waiting for events from topic 'accountCreated` and `postCreated`");
+        await consumer.Consume(async receivedEvent => {
             switch(receivedEvent.Topic)
             {
                 case "accountCreated": SendAccountCreationEmail(receivedEvent.Parse<Account>()); break;
                 case "postCreated": SendPostCreationEmail(receivedEvent.Parse<Post>());break;
             }
-        }
+        }, stoppingToken);
     }
 
     private void SendAccountCreationEmail(Account account)

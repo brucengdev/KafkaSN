@@ -2,13 +2,13 @@ namespace QueueClient;
 
 public interface IEventConsumer
 {
-    void Subscribe(string[] topics);
-    EventData Consume();
+    Task Subscribe(string[] topics);
+    Task Consume(Func<EventData, Task> callback, CancellationToken cancellationToken);
 }
 
 public static class EventConsumerExtensions {
-    public static void Subscribe(this IEventConsumer consumer, string topic)
+    public static async Task Subscribe(this IEventConsumer consumer, string topic)
     {
-        consumer.Subscribe([topic]);
+        await consumer.Subscribe([topic]);
     }
 }
